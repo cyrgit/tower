@@ -1,6 +1,7 @@
 ---
 - name: Weberser installation
-  hosts: servers
+  hosts: 10.211.55.32
+  become: yes
   tasks:
     - name: install httpd
       dnf: name=httpd
