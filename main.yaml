@@ -11,10 +11,10 @@
         enabled: true 
         state: started
     - name: creating the index.html
-      copy:
-        content: "WELCOME TO DCM LINUX"
-        dest: /var/www/html/index.html
-        node: 0444
+      lineinfile:
+        path: /var/www/html/index.html
+        line: "WELCOME TO DCM LINUX"
+        create: yes
     - name: open firewall port
       firewalld:
         service: httpd
