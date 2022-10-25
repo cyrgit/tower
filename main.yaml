@@ -6,7 +6,10 @@
     - name: install httpd
       dnf: name=httpd
     - name: enable and start httpd
-      service: name=https enable=true state=started
+      systemd: 
+        name: httpd 
+        enabled: true 
+        state: started
     - name: creating the index.html
       copy:
         content: "WELCOME TO DCM LINUX"
