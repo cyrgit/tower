@@ -1,0 +1,20 @@
+---
+- name: Weberser installation
+  hosts: servers
+  tasks:
+    - name: install httpd
+      dnf: name=httpd
+    - name: enable and start httpd
+      service: name=https enable=true state=started
+    - name: creating the index.html
+      copy:
+        content: "WELCOME TO DCM LINUX"
+        dest: /var/www/html/index.html
+        node: 0444
+    - name: open firewall port
+      firewalld:
+        service: httpd
+        permanent: true
+        state: enabled
+        immediate: yes
+
